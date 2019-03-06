@@ -61,7 +61,10 @@ function keyPressEvent(event) {
     else if (faceMode == 2) {
         commandMode(code);
     }
-
+    if (code.slice(0, 6) === "Numpad" || event.ctrlKey) {
+        event.stopPropagation();
+    }
+	
     switch (code) {
         case 'F9':
             modeCommand();
@@ -410,8 +413,8 @@ function ranIntAry(max) {
 
 //Mode diplay fix
 function faceType() {
-
     switch (faceE) {
+		
         case 'p':
             faceE = 'C';
             if (faceMode == 0) {
@@ -467,15 +470,15 @@ function faceType() {
             }
             break;
         case '.':
-            faceE = 'p';
+            faceE = 'P';
             if (faceMode == 0) {
-                textInfo0.textContent = "*p*";
+                textInfo0.textContent = "*P*";
             }
             else if (faceMode == 1) {
-                textInfo0.textContent = "apa";
+                textInfo0.textContent = "aPa";
             }
             break;
-        case 'p':
+        case 'P':
             faceE = '~';
             if (faceMode == 0) {
                 textInfo0.textContent = "*~*";
@@ -484,6 +487,7 @@ function faceType() {
                 textInfo0.textContent = "a~a";
             }
             break;
+			
         case '~':
             faceE = 'o';
             if (faceMode == 0) {
@@ -494,22 +498,24 @@ function faceType() {
             }
             break;
         case 'o':
-            faceE = 'P';
+            faceE = 'p';
             if (faceMode == 0) {
-                textInfo0.textContent = "*P*";
+                textInfo0.textContent = "*p*";
             }
             else if (faceMode == 1) {
-                textInfo0.textContent = "aPa";
+                textInfo0.textContent = "apa";
             }
             break;
         default:
-            faceE = 'C';
+
+			faceE = 'C';
             if (faceMode == 0) {
                 textInfo0.textContent = "*C*";
             }
             else if (faceMode == 1) {
                 textInfo0.textContent = "aCa";
             }
+
             break;
 
     }
